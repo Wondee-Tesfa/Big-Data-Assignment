@@ -239,16 +239,3 @@ Connect to `taxi_db` using **pgAdmin** or `psql` and execute [`sql/verify_querie
    WHERE pickup_datetime >= '2015-01-15' AND pickup_datetime < '2015-01-16';
    ```
    *Result:* Uses `Index Only Scan` in **55.1 ms** (`Heap Fetches: 0`).
-
----
-
-## 📋 Student Rubric Self-Assessment (Target: 100 / 100)
-
-| Rubric Criteria | Points | Status | Evidence |
-| :--- | :---: | :---: | :--- |
-| **Dataset & Business Relevance** | 15 / 15 | **Outstanding** | 12.7M raw rows / 2.44M+ loaded in 5 chunks ($\ge$ 2M requirement met). High-relevance mobility business problem defined with clear objectives. Source and schema fully documented. |
-| **ETL Process & Memory Management** | 30 / 30 | **Outstanding** | Modular Python pipeline. Memory-efficient chunking (**303 MB measured peak RAM**). 12-rule data cleaning matrix. PostgreSQL `COPY` bulk streaming. Transactional fault tolerance. |
-| **Database Schema & Optimization** | 25 / 25 | **Outstanding** | Star Schema with 3 dimension tables (3NF) and 1 fact table. Optimal data types (`BIGSERIAL`, `NUMERIC(8,2)`). Strict `CHECK` and `FK` constraints. B-Tree indexes + `ANALYZE`. |
-| **Code Quality & Reproducibility** | 15 / 15 | **Outstanding** | PEP 8-compliant, clean modular structure (`src/config`, `extract`, `transform`, `load`, `database`, `utils`). Automated unit tests in `tests/`. CLI flags (`--test`, `--chunks`). Logging to console and `logs/etl.log`. |
-| **Project Report & Documentation** | 15 / 15 | **Outstanding** | Formal technical report in [`REPORT.md`](./REPORT.md). Architecture and ER diagrams included. Step-by-step setup guide. 12 verification and BI queries documented. |
-| **Total Evaluation** | **100 / 100** | **Outstanding** | **All criteria completely fulfilled.** |
