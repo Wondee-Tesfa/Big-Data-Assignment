@@ -1,0 +1,30 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Large Raw Datasets (Exclude multi-gigabyte files from git tracking)
+data/raw/*.csv
+*.csv
+
+# Logs & Environment Variables
+.env
+logs/*.log
+*.log
+
+# Unit Test & IDE Cache
+.pytest_cache/
+.coverage
+htmlcov/
+.vscode/
+.idea/
+
+.env
+.venv/
+data/raw/

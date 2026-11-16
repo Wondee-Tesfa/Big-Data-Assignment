@@ -1,0 +1,21 @@
+NYC TAXI BIG DATA ETL - AUDIT REPORT
+==================================================
+Raw rows read           :   12,748,986
+Rows loaded (clean)     :   12,421,659
+Rows removed (total)    :      327,327
+
+Rows removed per validation rule:
+  null_values               :            3
+  duplicates                :          379
+  pickup_outside_jan_2015   :            0
+  bad_duration              :       15,192
+  bad_passenger_count       :        6,588
+  bad_trip_distance         :       64,561
+  bad_amounts               :        3,207
+  bad_coordinates           :      237,397
+  bad_vendor                :            0
+  bad_rate_code             :            0
+  bad_payment_type          :            0
+
+Failed chunks           : none
+Elapsed time            : 25.2 minutes

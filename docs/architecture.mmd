@@ -1,0 +1,37 @@
+flowchart LR
+    A["📄 CSV Source\nyellow_tripdata_2015-01.csv\n1.85 GiB · ~12.7M rows"] --> B
+
+    subgraph ETL["Python ETL Pipeline (run_pipeline.py)"]
+        B["🔍 Extract\nsrc/extract.py\nChunked streaming\n500K rows/chunk"] --> C
+        C["🔧 Transform\nsrc/transform.py\n12-rule cleansing\nFeature engineering"] --> D
+        D["📤 Load\nsrc/load.py\nPostgreSQL COPY\nbulk insert"]
+    end
+
+    subgraph DB["PostgreSQL taxi_db"]
+        F["📊 vendors"]
+        G["📊 payment_types"]
+        H["📊 rate_codes"]
+        I["🏢 trips\n12,421,659 rows"]
+    end
+
+    D --> I
+    F --> I
+    G --> I
+    H --> I
+
+    subgraph OPT["Post-Load Optimization"]
+        J["🗂️ sql/indexes.sql\nB-tree & composite indexes"]
+        K["📈 ANALYZE\nQuery planner stats"]
+    end
+
+    I --> J --> K
+
+    subgraph RPT["Output Artifacts"]
+        L["📋 reports/etl_report.txt"]
+        M["📝 logs/etl.log"]
+        N["📊 reports/execution_summary.txt"]
+    end
+
+    K --> L
+    K --> M
+    K --> N

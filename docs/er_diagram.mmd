@@ -1,0 +1,45 @@
+erDiagram
+    vendors {
+        SMALLINT vendor_id PK
+        VARCHAR vendor_name
+    }
+
+    payment_types {
+        SMALLINT payment_type_id PK
+        VARCHAR description
+    }
+
+    rate_codes {
+        SMALLINT rate_code_id PK
+        VARCHAR description
+    }
+
+    trips {
+        BIGSERIAL trip_id PK
+        SMALLINT vendor_id FK
+        SMALLINT rate_code_id FK
+        SMALLINT payment_type_id FK
+        TIMESTAMP pickup_datetime
+        TIMESTAMP dropoff_datetime
+        SMALLINT passenger_count
+        NUMERIC trip_distance
+        DOUBLE_PRECISION pickup_longitude
+        DOUBLE_PRECISION pickup_latitude
+        DOUBLE_PRECISION dropoff_longitude
+        DOUBLE_PRECISION dropoff_latitude
+        CHAR store_and_fwd_flag
+        NUMERIC fare_amount
+        NUMERIC extra
+        NUMERIC mta_tax
+        NUMERIC tip_amount
+        NUMERIC tolls_amount
+        NUMERIC improvement_surcharge
+        NUMERIC total_amount
+        NUMERIC trip_duration_min
+        SMALLINT pickup_hour
+        SMALLINT pickup_dow
+    }
+
+    vendors ||--o{ trips : "provides"
+    payment_types ||--o{ trips : "settles"
+    rate_codes ||--o{ trips : "categorizes"

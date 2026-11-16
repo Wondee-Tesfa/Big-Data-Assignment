@@ -1,0 +1,8 @@
+EXECUTION SUMMARY
+==================================================
+Status                  : SUCCESS
+Database Target         : PostgreSQL (taxi_db)
+Target Table            : trips
+Verified Total Records  : 12,421,659
+Rubric Milestone (>=2M) : PASSED
+Total Processing Time   : 25.18 minutes

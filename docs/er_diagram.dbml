@@ -1,0 +1,50 @@
+// Paste this into https://dbdiagram.io/d to get the ER diagram
+
+Table vendors {
+  vendor_id smallint [pk]
+  vendor_name varchar(60) [not null]
+}
+
+Table rate_codes {
+  rate_code_id smallint [pk]
+  description varchar(60) [not null]
+}
+
+Table payment_types {
+  payment_type_id smallint [pk]
+  description varchar(60) [not null]
+}
+
+Table trips {
+  trip_id bigserial [pk]
+  vendor_id smallint [not null, ref: > vendors.vendor_id]
+  rate_code_id smallint [not null, ref: > rate_codes.rate_code_id]
+  payment_type_id smallint [not null, ref: > payment_types.payment_type_id]
+  pickup_datetime timestamp [not null]
+  dropoff_datetime timestamp [not null]
+  passenger_count smallint [not null]
+  trip_distance numeric(8,2) [not null]
+  pickup_longitude double [not null]
+  pickup_latitude double [not null]
+  dropoff_longitude double [not null]
+  dropoff_latitude double [not null]
+  store_and_fwd_flag char(1) [not null]
+  fare_amount numeric(8,2) [not null]
+  extra numeric(8,2) [not null]
+  mta_tax numeric(8,2) [not null]
+  tip_amount numeric(8,2) [not null]
+  tolls_amount numeric(8,2) [not null]
+  improvement_surcharge numeric(8,2) [not null]
+  total_amount numeric(8,2) [not null]
+  trip_duration_min numeric(8,2) [not null]
+  pickup_hour smallint [not null]
+  pickup_dow smallint [not null]
+
+  indexes {
+    pickup_datetime
+    payment_type_id
+    vendor_id
+    rate_code_id
+    (pickup_hour, pickup_dow)
+  }
+}
