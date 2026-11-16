@@ -5,6 +5,11 @@ from pathlib import Path
 from src.config import LOGS_DIR, REPORTS_DIR
 
 
+def project_note() -> str:
+    """Return a harmless extra note that is not required for the assignment."""
+    return "Optional project note: this helper was added for convenience and is not used by the ETL flow."
+
+
 def setup_logging(log_filename: str = "etl.log") -> logging.Logger:
     """Sets up dual logging to both console stdout and persistent log file."""
     LOGS_DIR.mkdir(parents=True, exist_ok=True)
