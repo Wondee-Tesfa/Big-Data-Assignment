@@ -3,7 +3,7 @@
 
 ---
 
-**Course:** Big Data Analysis (Information Systems 2026 I)  
+**Course:** Big Data Analysis (Information Systems 2026 )  
 **Instructor:** Derbew Felasman  
 **Assignment:** Group Assignment: Designing a Simple Data Pipeline and ETL Process  
 **Dataset:** New York City (NYC) Yellow Taxi Trip Records (January 2015)  
@@ -14,25 +14,24 @@
 
 ### 👥 Group Submission Details
 
-| # | Student Full Name | Student ID | Department | Primary Contribution |
-| :-: | :--- | :--- | :--- | :--- |
-| **1** | **Wondmagegn [Your Last Name]** *(Group Lead)* | `[Your ID Number]` | Information Systems | Pipeline Architecture, Schema Design, PostgreSQL COPY Engine |
-| **2** | `[Group Member 2 Full Name]` | `[Student ID]` | Information Systems | Vectorized Data Cleaning & Feature Engineering |
-| **3** | `[Group Member 3 Full Name]` | `[Student ID]` | Information Systems | Business Intelligence Queries & Index Optimization |
-| **4** | `[Group Member 4 Full Name]` | `[Student ID]` | Information Systems | Quality Assurance, Testing & Technical Report |
-
+| # | Student Full Name | Department |
+| :-: | :--- | :--- | 
+| **1** | **Wondmagegn Tesfa**| Information Systems | 
+| **2** | **Worku Addisu** | Information Systems | 
+| **3** | **Yibeltal Zerie** | Information Systems | 
+| **4** | **Yitatek Abera** | Information Systems | 
+| **5** | **Birtukan Ermias** | Information Systems | 
 ---
 
 ## Executive Summary
 
 This project delivers a production-grade, highly optimized Extract, Transform, Load (ETL) pipeline and relational data warehouse designed to ingest, cleanse, normalize, and analyze high-velocity big data. Using the New York City Taxi and Limousine Commission (TLC) January 2015 dataset (**~1.85 GB uncompressed, ~12.7 million raw trip records**), the pipeline demonstrates how to process millions of records with constant, low memory footprint in Python using chunked stream processing, robust data hygiene algorithms, and PostgreSQL high-performance `COPY` streaming.
 
-The transformed data is modeled in a **Star Schema with Third Normal Form (3NF) compliant dimension tables** featuring strict domain constraints, referential integrity, and post-load indexing. In the demonstrated 5-chunk production run, the pipeline ingested **2,500,000 raw rows** and successfully loaded **2,435,591 clean records** into PostgreSQL (comfortably exceeding the assignment's 2,000,000-record threshold) in **8.1 minutes** with peak memory strictly below **304 MB RAM**. The resulting data warehouse supports sub-second analytical queries on urban mobility demand, revenue trends, tipping patterns, and fleet efficiency.
+The transformed data is modeled in a **Star Schema with Third Normal Form (3NF) compliant dimension tables** featuring strict domain constraints, referential integrity, and post-load indexing.  The resulting data warehouse supports sub-second analytical queries on urban mobility demand, revenue trends, tipping patterns, and fleet efficiency.
 
 ---
 
-## 1. Business Scenario & Dataset Specification (Rubric Item 1: 15/15 pts)
-
+## 1. Business Scenario & Dataset Specification 
 ### 1.1 Business Problem & Scenario
 Urban transportation networks and modern fleet dispatching companies (e.g., Yellow Cab, Uber, Lyft) operate in dynamic, data-intensive environments. Fleet management executives, dispatch dispatchers, and financial analysts require reliable, high-integrity historical trip data to make mission-critical operational decisions:
 1. **Dynamic Fleet & Driver Allocation:** At what specific hours and on which days of the week is passenger demand highest? How should driver shifts be scheduled to minimize passenger wait times while maximizing driver earnings?
@@ -48,12 +47,6 @@ Raw CSV exports cannot answer these questions directly because they contain malf
 * **Dataset Period:** January 1, 2015 – January 31, 2015 (`yellow_tripdata_2015-01.csv`).
 * **Raw File Size:** 1,985,964,692 bytes (~1.85 GiB).
 * **Total File Record Volume:** ~12,748,986 raw rows in the source CSV.
-* **Demonstrated Execution Run (Five Chunks):**
-  * Raw Rows Read: **2,500,000** (5 chunks $\times 500,000$ rows/batch).
-  * Outlier & Anomaly Rows Filtered: **64,409** (2.58% rejection rate).
-  * **Clean Records Loaded into Database:** **2,435,591** records.
-  * **Assignment Threshold Status:** **PASSED** ($\ge 2,000,000$ records target fully achieved in 8.1 minutes).
-* **Full Dataset Ingestion Capability:** The identical script running without the `--chunks 5` flag streams the entire ~12.7 million raw rows with the exact same constant memory profile (< 450 MB RAM).
 
 ### 1.3 Source Data Dictionary
 
@@ -81,7 +74,7 @@ Raw CSV exports cannot answer these questions directly because they contain malf
 
 ---
 
-## 2. End-to-End ETL Pipeline Architecture (Rubric Item 2: 30/30 pts)
+## 2. End-to-End ETL Pipeline Architecture 
 
 ### 2.1 Pipeline Architecture Diagram
 
@@ -188,7 +181,7 @@ def copy_dataframe(conn, df: pd.DataFrame) -> None:
 
 ---
 
-## 3. Database Schema Design & Optimization (Rubric Item 3: 25/25 pts)
+## 3. Database Schema Design & Optimization 
 
 ### 3.1 Entity-Relationship (ER) Diagram
 
@@ -292,7 +285,7 @@ ANALYZE trips;
 
 ---
 
-## 4. Code Quality, Modularity & Reproducibility (Rubric Item 4: 15/15 pts)
+## 4. Code Quality, Modularity & Reproducibility 
 
 ### 4.1 Modular Architecture
 The codebase strictly complies with PEP 8 standards and is divided into cohesive, single-responsibility functions:
@@ -369,7 +362,7 @@ python run_pipeline.py
 
 ---
 
-## 6. Verification & Business Intelligence Analytics (Rubric Item 5: 15/15 pts)
+## 6. Verification & Business Intelligence Analytics 
 
 The verification script [`verify_queries.sql`](./sql/verify_queries.sql) contains 12 rigorous queries designed to validate ingestion integrity and extract actionable business intelligence.
 
