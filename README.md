@@ -2,8 +2,6 @@
 
 An end-to-end, enterprise-grade Data Pipeline and ETL Process designed to process, sanitize, and load large-scale urban mobility data (**NYC Yellow Taxi Trip Records, January 2015**) into a normalized **PostgreSQL** data warehouse using **Python (Pandas)**.
 
-Designed for the **Big Data Analysis (Information Systems 2026 I)** course assignment under instructor **Derbew Felasman**, fulfilling all rubric criteria for an **Outstanding (100/100 Target)** score.
-
 ---
 
 ## 🚀 Key Features
