@@ -144,7 +144,6 @@ yellow_tripdata_2015-01.csv/          # Project root directory
 ├── .gitignore                            # Excludes logs, cache & raw large datasets
 ├── requirements.txt                      # Python dependencies (pandas, psycopg2)
 ├── run_pipeline.py                       # Master CLI orchestrator entrypoint
-├── run_pipeline.ps1                      # 1-Click PowerShell execution script
 ├── REPORT.md                             # Formal 100-point project report
 └── README.md                             # This documentation guide
 ```
