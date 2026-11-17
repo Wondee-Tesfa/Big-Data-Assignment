@@ -1,5 +1,5 @@
 pandas>=2.2
 psycopg2-binary>=2.9
 # If psycopg2-binary fails to install on Python 3.14, use this instead
-# (etl_pipeline.py supports both drivers automatically):
+# (run_pipeline.py supports both drivers automatically):
 # psycopg[binary]>=3.2
